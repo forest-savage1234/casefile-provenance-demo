@@ -1,5 +1,7 @@
 # Casefile Provenance Demo
 
+[Open the public demo](https://forest-savage1234.github.io/casefile-provenance-demo/) · [PNG QR code](assets/casefile-qr.png) · [Vector QR code](assets/casefile-qr.svg) · [Presenter walkthrough](docs/demo-script.md)
+
 A fictional missing-child case shows how provenance makes an evolving evidence collection and the reasoning built from it inspectable. Reports accumulate, an analyst discovers that apparently separate reports share an origin, new footage prompts a revised assessment, and a recorded decision redirects attention to an independent lead. The child is found safe.
 
 The central distinction: **a report can remain unchanged while the collection, its known relationships, and its assessed significance change.** Earlier records remain available in later case views.
