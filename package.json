@@ -1,0 +1,13 @@
+{
+  "name": "casefile-provenance-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A fictional missing-child investigation demonstrating an evolving evidence pool and preserved provenance.",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test",
+    "check": "node --check app.js && node --check model.js && node --check scenario.js && node --check server.mjs"
+  }
+}

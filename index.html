@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142733">
+  <meta name="description" content="Replay a fictional missing-child investigation. Trace every lead as the evidence pool changes, while preserving earlier reports and decisions.">
+  <title>Casefile · The evolving evidence pool</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to investigation</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Casefile home"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M7 7 21 14 7 21V7"/><circle cx="7" cy="7" r="3"/><circle cx="21" cy="14" r="3"/><circle cx="7" cy="21" r="3"/></svg>CASEFILE<span>PROVENANCE EXPLORER</span></a>
+    <nav aria-label="Demo resources"><button class="text-button" id="about-button">About this demo</button><a id="repo-link" href="https://github.com/forest-savage1234/casefile-provenance-demo" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">AN INTERACTIVE PROVENANCE DEMONSTRATION</p><h1 id="page-title">The evolving evidence pool</h1><p class="intro-copy">One search. Many incoming leads. Follow the changing picture<br class="desktop-break"> while every original report keeps its place in the record.</p></div>
+      <div class="case-stamp"><span class="status-dot"></span><div><strong>CASE 001 / FICTIONAL</strong><span>Missing child · all names and events invented</span></div></div>
+    </section>
+
+    <section class="replay" aria-label="Replay controls">
+      <div class="replay-top"><div class="replay-title"><span class="section-kicker">CASE REPLAY</span><strong id="step-label">01 / 07</strong></div><div class="transport"><button id="reset" class="text-button" title="Return to the first step">Reset</button><button id="back" class="small-button" aria-label="Back one step">← <span>Back</span></button><button id="play" class="primary-button"><span aria-hidden="true">▶</span> Play</button><button id="next" class="small-button" aria-label="Next step"><span>Next</span> →</button></div></div>
+      <label class="sr-only" for="timeline">Investigation timeline</label><input id="timeline" type="range" min="0" max="6" value="0" step="1">
+      <div id="stage-markers" class="stage-markers" aria-label="Jump to a step"></div>
+    </section>
+
+    <section class="chapter" aria-labelledby="chapter-title"><div class="clock"><span>CASE CLOCK</span><strong id="case-time">09:00</strong></div><div class="chapter-copy"><p class="eyebrow" id="chapter-count">STEP 01</p><h2 id="chapter-title"></h2><p id="chapter-summary" aria-live="polite" aria-atomic="true"></p></div></section>
+
+    <div class="workspace">
+      <section class="pool" aria-labelledby="pool-title">
+        <div class="pool-heading"><div><p class="eyebrow">THE RECORD AT THIS MOMENT</p><h2 id="pool-title">Connected evidence</h2></div><span class="fiction-badge">FICTIONAL CASE</span></div>
+        <div class="stats"><div><strong id="report-count">0</strong><span>Reports preserved</span></div><div><strong id="open-count">0</strong><span>Open search leads</span></div><div><strong id="origin-count">0</strong><span>Known origins · open leads</span></div></div>
+        <p class="network-hint">Swipe the network to explore its connections. Every report also appears in the lead register below.</p>
+        <div class="network-scroll" tabindex="0" aria-label="Provenance network. Scroll horizontally on a small screen, or use the report list below."><div class="network-heading"><span><i class="small-dot source-color"></i>Sources</span><span><i class="small-dot lead-color"></i>Lead reports</span><span><i class="small-dot decision-color"></i>Decisions</span></div><div id="network" class="network"><svg id="connections" aria-hidden="true"></svg><div id="source-nodes" class="node-column"></div><div id="lead-nodes" class="node-column"></div><div id="decision-nodes" class="node-column"></div></div></div>
+        <div class="network-legend"><span><i class="legend-line"></i>Recorded relationship</span><span><i class="legend-line disputed"></i>Assessment or revised basis</span><span>Choose a node to trace it</span></div>
+        <p class="origin-note">Known origins describe the recorded source links. A different source does not by itself establish independent corroboration.</p>
+      </section>
+      <aside class="inspector" aria-labelledby="inspector-title"><div class="inspector-heading"><p class="eyebrow">PROVENANCE INSPECTOR</p><span id="selected-kind">LEAD REPORT</span></div><div id="inspection-content"></div></aside>
+    </div>
+
+    <section class="lesson" aria-labelledby="lesson-heading"><span class="lesson-number" aria-hidden="true">↳</span><div><h2 id="lesson-heading">What this step reveals</h2><p id="lesson-text"></p></div></section>
+
+    <section class="ledger" aria-labelledby="ledger-title"><div class="ledger-heading"><div><p class="eyebrow">PRESERVED THROUGH THIS STEP</p><h2 id="ledger-title">Lead register</h2></div><button id="export" class="small-button">Export record <span aria-hidden="true">↓</span></button></div><p class="ledger-description">Select any report to inspect its source and assessment history. A changed assessment adds to the record.</p><div id="lead-register" class="lead-register"></div></section>
+    <p id="action-status" class="action-status" role="status"></p>
+    <footer><p>A fictional teaching example. The replay illustrates recorded lineage and reassessment; it does not authenticate evidence or validate a policing workflow.</p><div><a href="https://www.w3.org/TR/prov-o/" target="_blank" rel="noopener noreferrer">W3C PROV-O reference ↗</a><span>Runs in your browser · no case uploads</span></div></footer>
+  </main>
+  <dialog id="about-dialog" aria-labelledby="about-title"><div class="dialog-heading"><p class="eyebrow">ABOUT CASEFILE</p><button id="close-about" class="small-button" aria-label="Close about dialog">Close ×</button></div><h2 id="about-title">The pool changes.<br>The history remains.</h2><p>Advance the case one step at a time, or press Play. Select a source, lead, or decision to inspect its recorded relationships. Return to an earlier step to see the information available in this replay at that point.</p><p>Watch for the moment three reports turn out to share an origin. Later, an investigator reassesses their identification, while a separate lead remains available.</p><p><strong>Every person, organization, place, report, and outcome in the case is fictional.</strong> This is a scripted companion demonstration, with no connection to an operational case or police system.</p><p>Assessments represent recorded human judgments in the scenario. Source links alone establish neither truth nor independence. The downloadable JSON-LD uses W3C PROV terms alongside example-specific assessment terms. It is not a certified CASE/UCO implementation or a tamper-proof ledger.</p><p>This standalone demo does not change the existing research paper, application, or lecture files. See the repository for the presenter walkthrough and model limits.</p><a class="small-button" href="./docs/demo-script.md" target="_blank" rel="noopener noreferrer">Read the presenter walkthrough ↗</a></dialog>
+  <noscript><p class="noscript">This interactive replay needs JavaScript. The <a href="./docs/demo-script.md">presenter walkthrough</a> describes the complete fictional case.</p></noscript>
+</body>
+</html>
