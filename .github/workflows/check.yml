@@ -14,3 +14,8 @@ jobs:
           node-version: '22'
       - run: npm run check
       - run: npm test
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p test_actual_tool.py
+      - run: python scripts/verify_actual_tool.py --check

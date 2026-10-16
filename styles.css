@@ -6,3 +6,61 @@
 .network-scroll .network-heading{padding:12px 0 16px;min-width:540px;gap:23px}.network-hint{display:none}.node .node-label{font-size:12px}.node .node-id{font-size:9px}.node .node-status{font-size:9px}
 @media(max-width:1050px){.network-scroll .network-heading{min-width:500px;gap:20px}}@media(max-width:880px){.network-scroll .network-heading{min-width:540px;gap:23px}}@media(max-width:560px){.network-scroll .network-heading{min-width:570px;gap:25px}.network-hint{display:block;font-size:10px;line-height:1.6;color:#bdccca;padding:14px 17px 0;margin:0}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+.engine-panel { margin: 0 0 25px; padding: 24px; background: #fffefa; border: 1px solid #cdd7ce; border-top: 3px solid #b44726; border-radius: 5px; }
+.engine-heading { display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; }
+.engine-heading .eyebrow { font-size: 9px; color: #9c4328; margin-bottom: 6px; }
+.engine-heading h2 { font: 400 28px/1.2 Georgia, serif; letter-spacing: -.5px; margin: 0 0 9px; }
+.engine-heading p:last-child { font-size: 12px; color: #52676e; line-height: 1.7; margin: 0; }
+.execution-label { flex-shrink: 0; font-size: 10px; color: #536365; padding: 7px 10px; background: #eff1ea; border: 1px solid #d9dfd5; border-radius: 3px; }
+.execution-label.live { background: #e4efe6; color: #2c6245; border-color: #abcab3; }
+.engine-result { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 35px; border-top: 1px solid #dce2d9; border-bottom: 1px solid #dce2d9; padding: 21px 0; margin-top: 20px; }
+.engine-result h3 { font-size: 17px; font-weight: 600; margin: 0 0 9px; line-height: 1.4; }
+.engine-result p { font-size: 12px; color: #52676e; line-height: 1.75; margin: 0; }
+.engine-counts { display: grid; grid-template-columns: 1fr 1fr 1fr; margin: 0; gap: 15px; }
+.engine-counts > div { display: flex; flex-direction: column; gap: 6px; }
+.engine-counts dt { font-size: 10px; line-height: 1.5; color: #52676e; }
+.engine-counts dd { order: -1; font: 400 28px/1 monospace; margin: 0; }
+.engine-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding-top: 18px; }
+.engine-actions > p { flex: 1; font-size: 10px; line-height: 1.6; color: #617079; min-width: 220px; margin: 0 0 0 8px; }
+.engine-progress { font-size: 11px; line-height: 1.65; color: #79532c; margin: 12px 0 0; }
+.engine-progress:empty { display: none; }
+.engine-controls { margin-top: 13px; }
+.engine-panel details > summary { font-size: 11px; cursor: pointer; min-height: 38px; padding: 12px 0; line-height: 1.5; color: #52676e; }
+.engine-controls fieldset { border: 1px solid #d9dfd5; padding: 12px 15px; display: flex; gap: 15px; flex-wrap: wrap; border-radius: 3px; }
+.engine-controls legend { font-size: 10px; color: #617079; padding: 0 5px; }
+.engine-controls label { display: inline-flex; align-items: center; font-size: 12px; gap: 6px; min-height: 32px; cursor: pointer; }
+.engine-controls input { accent-color: #b44726; }
+.engine-controls p, .engine-control-note, .engine-boundary { font-size: 10px; line-height: 1.75; color: #617079; margin: 9px 0 0; }
+.engine-control-note { color: #52676e; }
+.engine-boundary { border-top: 1px solid #e3e7df; padding-top: 12px; margin-top: 10px; }
+.engine-evidence > p { font-size: 11px; line-height: 1.8; }
+.engine-evidence a { text-decoration: underline; text-underline-offset: 2px; }
+.engine-facts { display: grid; grid-template-columns: 150px 1fr; gap: 10px; font-size: 11px; line-height: 1.7; }
+.engine-facts dt { color: #617079; }
+.engine-facts dd { margin: 0; overflow-wrap: anywhere; }
+.engine-evidence pre { max-height: 300px; overflow: auto; font: 10px/1.6 monospace; padding: 15px; background: #edf1eb; border: 1px solid #d9dfd5; }
+@media (max-width: 880px) {
+  .engine-result { grid-template-columns: 1fr; gap: 20px; }
+  .engine-counts { max-width: 500px; }
+}
+@media (max-width: 560px) {
+  .engine-panel { padding: 19px 17px; }
+  .engine-heading { display: block; }
+  .engine-heading h2 { font-size: 25px; }
+  .execution-label { display: inline-block; margin-top: 13px; }
+  .engine-heading p:last-child { font-size: 11px; }
+  .engine-result { margin-top: 17px; padding: 17px 0; }
+  .engine-result h3 { font-size: 16px; }
+  .engine-result p { font-size: 11px; }
+  .engine-counts { gap: 10px; }
+  .engine-counts dt { font-size: 9px; }
+  .engine-counts dd { font-size: 25px; }
+  .engine-actions > p { flex-basis: 100%; margin: 3px 0 0; font-size: 10px; }
+  .engine-actions .primary-button, .engine-actions .small-button { font-size: 10px; padding: 10px; }
+  .engine-controls fieldset { gap: 7px 12px; padding: 10px; }
+  .engine-controls label { font-size: 11px; }
+  .engine-facts { grid-template-columns: 1fr; gap: 4px; }
+  .engine-facts dd { margin-bottom: 10px; }
+  .engine-evidence pre { font-size: 9px; }
+}

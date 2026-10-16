@@ -1,5 +1,6 @@
 import { stages } from './scenario.js';
 import { getSnapshot, exportSnapshot } from './model.js';
+import { initializeActualTool, updateEngineStep } from './engine-view.js';
 
 const $ = (id) => document.getElementById(id);
 const esc = (value = '') => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -118,6 +119,7 @@ function render() {
   $('back').disabled = index === 0;
   $('next').disabled = index === stages.length - 1;
   renderInspector();
+  updateEngineStep(index);
   updateUrl();
   requestAnimationFrame(drawConnections);
 }
@@ -184,4 +186,7 @@ $('close-about').addEventListener('click', () => $('about-dialog').close());
 $('about-dialog').addEventListener('click', event => { if (event.target === $('about-dialog')) { const rect = event.target.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) event.target.close(); } });
 document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
 new ResizeObserver(() => requestAnimationFrame(drawConnections)).observe($('network'));
+['engine-run', 'engine-export'].forEach(id => $(id).addEventListener('click', pause));
+document.querySelectorAll('input[name="engine-mode"]').forEach(radio => radio.addEventListener('change', pause));
+initializeActualTool();
 render();

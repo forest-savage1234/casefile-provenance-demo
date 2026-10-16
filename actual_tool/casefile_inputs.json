@@ -1,0 +1,466 @@
+{
+  "schema": 1,
+  "title": "Fictional missing-child reassessment: actual engine inputs",
+  "modeled_clock": "2026-10-01T16:00:00Z",
+  "scope": "New demonstration fixture, separate from every earlier evaluation corpus. All people, relationships, observations, assessments, decisions and outcomes are authored fictional inputs. A fixed modeled clock makes replay deterministic; it is not an execution timestamp.",
+  "stage_labels": [
+    "Intake",
+    "Witness and human assessment; D1",
+    "New reports enlarge the evidence pool",
+    "Human supplies common-source finding",
+    "Human corrects separate assessment; engine checks impact",
+    "Simulated human review and separate footbridge decision",
+    "Supplied fictional safe outcome"
+  ],
+  "modes": {
+    "linked": "Registered D1 dependencies; mapped human assessment changes; engine requests review.",
+    "editorial": "Assessment bytes change only in an unmapped note; no mapped-value change and no request.",
+    "missing_link": "D1 imported via legacy_reason with declared refs but no registered edges; mapped correction generates no request and incomplete coverage remains."
+  },
+  "operations": [
+    {
+      "stage": 0,
+      "label": "Register a fictional intake report.",
+      "action": {
+        "op": "document",
+        "source_key": "source_intake",
+        "observation_key": "intake",
+        "mapping": {
+          "reported_missing": "reported_missing"
+        },
+        "url": "https://fixture.invalid/source_intake"
+      }
+    },
+    {
+      "stage": 0,
+      "label": "A fictional dispatcher supplies the missing-child intake.",
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_intake",
+        "source_key": "source_intake",
+        "content": {
+          "case_id": "fictional_case_014",
+          "reported_missing": true,
+          "supplied_by": "fictional_dispatcher"
+        },
+        "retrieved_at": "2026-10-01T09:00:00Z"
+      }
+    },
+    {
+      "stage": 1,
+      "label": "Register the original witness report.",
+      "action": {
+        "op": "document",
+        "source_key": "source_witness",
+        "observation_key": "witness",
+        "mapping": {
+          "reported_sighting": "reported_sighting"
+        },
+        "url": "https://fixture.invalid/source_witness"
+      }
+    },
+    {
+      "stage": 1,
+      "label": "Preserve the witness's original words; they are not an established identification.",
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_witness",
+        "source_key": "source_witness",
+        "content": {
+          "reported_sighting": "I saw a child beside a red van near the market.",
+          "reported_event_time": "2026-10-01T08:55:00Z",
+          "supplied_by": "fictional_witness",
+          "identity_verified": false
+        },
+        "retrieved_at": "2026-10-01T09:05:00Z"
+      }
+    },
+    {
+      "stage": 1,
+      "label": "Register a separate human identification-assessment document.",
+      "action": {
+        "op": "document",
+        "source_key": "source_identification_assessment",
+        "observation_key": "identification_assessment",
+        "mapping": {
+          "identification_assessment": "identification_assessment"
+        },
+        "url": "https://fixture.invalid/source_identification_assessment"
+      }
+    },
+    {
+      "stage": 1,
+      "label": "A fictional analyst supplies a tentative identification assessment.",
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_assessment_initial",
+        "source_key": "source_identification_assessment",
+        "content": {
+          "identification_assessment": "possibly_mika",
+          "editor_note": "Initial fictional human assessment; identity remains unverified.",
+          "supplied_by": "fictional_analyst",
+          "basis_source_keys": "source_witness"
+        },
+        "retrieved_at": "2026-10-01T09:05:00Z"
+      }
+    },
+    {
+      "stage": 1,
+      "label": "A simulated officer records D1 and explicitly registers its two inputs.",
+      "modes": [
+        "linked",
+        "editorial"
+      ],
+      "action": {
+        "op": "decision",
+        "node_id": "decision_van_d1",
+        "lead_id": "lead_red_van",
+        "disposition": "pursue",
+        "rationale": "Simulated officer: check the red-van sighting because the witness report and the separate human assessment suggest a possible identification. The identification is unverified.",
+        "refs": [
+          {
+            "observation_key": "witness",
+            "fields": [
+              "reported_sighting"
+            ]
+          },
+          {
+            "observation_key": "identification_assessment",
+            "fields": [
+              "identification_assessment"
+            ]
+          }
+        ],
+        "reviewer_id": "fictional_officer"
+      }
+    },
+    {
+      "stage": 1,
+      "label": "Import the same D1 with declared refs but no registered edges, using the engine's legacy path.",
+      "modes": [
+        "missing_link"
+      ],
+      "action": {
+        "op": "decision",
+        "node_id": "decision_van_d1",
+        "lead_id": "lead_red_van",
+        "disposition": "pursue",
+        "rationale": "Simulated officer: check the red-van sighting because the witness report and the separate human assessment suggest a possible identification. The identification is unverified.",
+        "refs": [
+          {
+            "observation_key": "witness",
+            "fields": [
+              "reported_sighting"
+            ]
+          },
+          {
+            "observation_key": "identification_assessment",
+            "fields": [
+              "identification_assessment"
+            ]
+          }
+        ],
+        "reviewer_id": "fictional_officer",
+        "legacy_reason": "Fictional imported decision: recorded input references have not been registered as dependency edges."
+      }
+    },
+    {
+      "stage": 2,
+      "label": "Register a telephone tip as a separate new source.",
+      "action": {
+        "op": "document",
+        "source_key": "source_repeat_a",
+        "observation_key": "repeat_a",
+        "mapping": {
+          "reported_sighting": "reported_sighting"
+        },
+        "url": "https://fixture.invalid/source_repeat_a"
+      }
+    },
+    {
+      "stage": 2,
+      "label": "New a telephone tip arrives. The engine does not infer corroboration or create a request.",
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_repeat_a",
+        "source_key": "source_repeat_a",
+        "content": {
+          "reported_sighting": "A child was reportedly beside a red van near the market.",
+          "origin_relationship": "not yet supplied",
+          "supplied_by": "fictional_reporter_a"
+        },
+        "retrieved_at": "2026-10-01T09:10:00Z"
+      }
+    },
+    {
+      "stage": 2,
+      "label": "Register an officer relay as a separate new source.",
+      "action": {
+        "op": "document",
+        "source_key": "source_repeat_b",
+        "observation_key": "repeat_b",
+        "mapping": {
+          "reported_sighting": "reported_sighting"
+        },
+        "url": "https://fixture.invalid/source_repeat_b"
+      }
+    },
+    {
+      "stage": 2,
+      "label": "New an officer relay arrives. The engine does not infer corroboration or create a request.",
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_repeat_b",
+        "source_key": "source_repeat_b",
+        "content": {
+          "reported_sighting": "A child was reportedly beside a red van near the market.",
+          "origin_relationship": "not yet supplied",
+          "supplied_by": "fictional_reporter_b"
+        },
+        "retrieved_at": "2026-10-01T09:10:00Z"
+      }
+    },
+    {
+      "stage": 3,
+      "label": "Register a human-authored common-source finding.",
+      "action": {
+        "op": "document",
+        "source_key": "source_common_origin_finding",
+        "observation_key": "common_origin_finding",
+        "mapping": {
+          "finding": "finding"
+        },
+        "url": "https://fixture.invalid/source_common_origin_finding"
+      }
+    },
+    {
+      "stage": 3,
+      "label": "A fictional analyst supplies the shared origin. This is an authored input, not engine discovery.",
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_common_origin",
+        "source_key": "source_common_origin_finding",
+        "content": {
+          "finding": "The two later reports repeat a social post quoting the original witness.",
+          "supplied_by": "fictional_analyst",
+          "related_source_keys": "source_witness,source_repeat_a,source_repeat_b",
+          "relationship_supplied_by_human": true
+        },
+        "retrieved_at": "2026-10-01T09:15:00Z"
+      }
+    },
+    {
+      "stage": 4,
+      "label": "Register a human-authored footage-review report; no video is processed.",
+      "action": {
+        "op": "document",
+        "source_key": "source_footage_review",
+        "observation_key": "footage_review",
+        "mapping": {
+          "review_result": "review_result"
+        },
+        "url": "https://fixture.invalid/source_footage_review"
+      }
+    },
+    {
+      "stage": 4,
+      "label": "New footage-review report arrives as a fictional human input.",
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_footage",
+        "source_key": "source_footage_review",
+        "content": {
+          "review_result": "The fictional footage reviewer identifies the child in the red-van sighting as a different child.",
+          "supplied_by": "fictional_footage_reviewer",
+          "video_included": false
+        },
+        "retrieved_at": "2026-10-01T09:20:00Z"
+      }
+    },
+    {
+      "stage": 4,
+      "label": "A human supplies a new assessment version. Original witness bytes stay unchanged; engine evaluates mapped-field impact.",
+      "modes": [
+        "linked",
+        "missing_link"
+      ],
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_assessment_corrected",
+        "source_key": "source_identification_assessment",
+        "content": {
+          "identification_assessment": "different_child",
+          "editor_note": "Human correction supplied after the fictional footage review.",
+          "supplied_by": "fictional_analyst",
+          "basis_source_keys": "source_witness,source_footage_review"
+        },
+        "retrieved_at": "2026-10-01T09:20:00Z"
+      }
+    },
+    {
+      "stage": 4,
+      "label": "Editorial control: change only unmapped note bytes in the assessment.",
+      "modes": [
+        "editorial"
+      ],
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_assessment_editorial",
+        "source_key": "source_identification_assessment",
+        "content": {
+          "identification_assessment": "possibly_mika",
+          "editor_note": "Editorial note updated; the mapped identification assessment is unchanged.",
+          "supplied_by": "fictional_analyst",
+          "basis_source_keys": "source_witness"
+        },
+        "retrieved_at": "2026-10-01T09:20:00Z"
+      }
+    },
+    {
+      "stage": 5,
+      "label": "A simulated human reviewer responds to the real engine request and appends van D2.",
+      "modes": [
+        "linked"
+      ],
+      "action": {
+        "op": "human_review",
+        "decision_id": "decision_van_d1",
+        "review_id": "review_van_1",
+        "new_decision_id": "decision_van_d2",
+        "disposition": "defer",
+        "rationale": "Simulated human reviewer: the supplied assessment correction undermines D1's recorded identification basis. Defer the red-van lead pending independent corroboration. The engine did not choose this disposition.",
+        "refs": [
+          {
+            "observation_key": "witness",
+            "fields": [
+              "reported_sighting"
+            ]
+          },
+          {
+            "observation_key": "identification_assessment",
+            "fields": [
+              "identification_assessment"
+            ]
+          },
+          {
+            "observation_key": "footage_review",
+            "fields": [
+              "review_result"
+            ]
+          }
+        ],
+        "reviewer_id": "fictional_supervisor"
+      }
+    },
+    {
+      "stage": 5,
+      "label": "Register a separate fictional library report.",
+      "action": {
+        "op": "document",
+        "source_key": "source_library",
+        "observation_key": "library",
+        "mapping": {
+          "reported_sighting": "reported_sighting"
+        },
+        "url": "https://fixture.invalid/source_library"
+      }
+    },
+    {
+      "stage": 5,
+      "label": "A fictional librarian supplies a new lead; the engine does not rank it.",
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_library",
+        "source_key": "source_library",
+        "content": {
+          "reported_sighting": "A possible match left the library toward the footbridge.",
+          "supplied_by": "fictional_librarian",
+          "identity_verified": false
+        },
+        "retrieved_at": "2026-10-01T09:25:00Z"
+      }
+    },
+    {
+      "stage": 5,
+      "label": "Register a separate fictional footbridge report.",
+      "action": {
+        "op": "document",
+        "source_key": "source_footbridge",
+        "observation_key": "footbridge",
+        "mapping": {
+          "reported_sighting": "reported_sighting"
+        },
+        "url": "https://fixture.invalid/source_footbridge"
+      }
+    },
+    {
+      "stage": 5,
+      "label": "A fictional witness supplies the footbridge report.",
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_footbridge",
+        "source_key": "source_footbridge",
+        "content": {
+          "reported_sighting": "A possible match is near the footbridge with a family acquaintance.",
+          "supplied_by": "fictional_footbridge_witness",
+          "identity_verified": false
+        },
+        "retrieved_at": "2026-10-01T09:25:00Z"
+      }
+    },
+    {
+      "stage": 5,
+      "label": "A simulated officer supplies a separate footbridge decision and its two recorded inputs.",
+      "action": {
+        "op": "decision",
+        "node_id": "decision_footbridge_d1",
+        "lead_id": "lead_footbridge",
+        "disposition": "pursue",
+        "rationale": "Simulated officer: check the footbridge reports using the two listed sources. This decision is supplied by a person; the engine did not select or rank the lead.",
+        "refs": [
+          {
+            "observation_key": "library",
+            "fields": [
+              "reported_sighting"
+            ]
+          },
+          {
+            "observation_key": "footbridge",
+            "fields": [
+              "reported_sighting"
+            ]
+          }
+        ],
+        "reviewer_id": "fictional_officer"
+      }
+    },
+    {
+      "stage": 6,
+      "label": "Register the supplied fictional outcome report.",
+      "action": {
+        "op": "document",
+        "source_key": "source_outcome",
+        "observation_key": "outcome",
+        "mapping": {
+          "reported_outcome": "reported_outcome"
+        },
+        "url": "https://fixture.invalid/source_outcome"
+      }
+    },
+    {
+      "stage": 6,
+      "label": "Record the authored safe outcome. The engine did not locate the child or prove recovery benefit.",
+      "action": {
+        "op": "capture",
+        "capture_id": "capture_outcome",
+        "source_key": "source_outcome",
+        "content": {
+          "reported_outcome": "child_found_safe",
+          "supplied_by": "fictional_supervisor",
+          "engine_caused_recovery": false
+        },
+        "retrieved_at": "2026-10-01T09:30:00Z"
+      }
+    }
+  ]
+}
