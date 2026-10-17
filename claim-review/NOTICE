@@ -1,0 +1,36 @@
+Metabolic Engineering Forensics
+Claim Review browser companion 0.2.0 and Python verifier
+Copyright 2026 Forest Savage
+Forest Savage, Independent Researcher
+https://github.com/forest-savage1234/metabolic-engineering-forensics
+
+Forest Savage's own code is licensed under the Apache License, Version 2.0.
+The Apache license does not replace licenses for published data or vendored
+dependencies, including the components embedded in dist/index.html.
+
+Published example data
+Cho et al. (2026), High-titer, antibiotic-free, pilot-scale production of
+1,3-propanediol by engineered Corynebacterium. Nature Chemical Engineering
+3, 272-285. https://doi.org/10.1038/s44286-026-00389-w
+Released source data, Figshare version 1:
+https://doi.org/10.6084/m9.figshare.29264624.v1
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+Original Figure 4 workbook bytes retained unchanged, including the embedded
+copy and unmodified test fixture. SHA-256:
+64f50342bcfdfa022ea760f8f9983abc7c3fd561c44296ee88b7a9cecc82755c
+Claim bindings, arithmetic reports, and synthetic demonstrations are derived
+review materials. The authors of the study did not create or endorse this tool.
+Any deliberately altered test workbooks are test fixtures, not published data.
+
+Vendored parsing dependencies
+pako 1.0.11, MIT License
+Copyright (C) 2014-2017 Vitaly Puzrin and Andrei Tuputcyn
+xml-js 1.6.11, MIT License
+Copyright (c) 2016-2017 Yousuf Almarzooqi
+sax 1.6.1, Blue Oak Model License 1.0.0
+Full retained notices: THIRD_PARTY_NOTICES.txt and vendor/node_modules/*/LICENSE*
+
+Contact: savagef@oregonstate.edu
+
+Vendor metadata adaptation: the unused obsolete xml-js coverage upload script was removed from package.json. Its runtime source and MIT license notices are retained.
