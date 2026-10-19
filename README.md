@@ -92,3 +92,7 @@ The story export illustrates [W3C PROV-O](https://www.w3.org/TR/prov-o/) concept
 Every person, report, location, timestamp, and outcome is fictional. The footage is represented by a fictional review record; no video is analyzed. The tool compares explicitly mapped structured fields and declared links. Entirely new sources do not trigger reassessment of decisions without a recorded dependency path. Unrecorded relationships remain outside its view. Human actor labels are not authenticated identities. Internal digest and replay checks do not authenticate source truth or prove a forensic chain of custody.
 
 This is a lecture demonstration, without validated police workflows, multi-user coordination, an enduring storage service, or operational lead prioritization. Keep contributions fictional, retain source attribution, document the provenance distinction demonstrated, and run the relevant checks. Do not add real case data or private meeting notes.
+
+## Related scientific work
+
+[Claim Review](claim-review/) is a separate browser companion for checking declared scientific calculations against source data. It is hosted on this site and documented with [Metabolic Engineering Forensics](https://github.com/forest-savage1234/metabolic-engineering-forensics).
